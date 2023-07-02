@@ -32,12 +32,12 @@ pub fn Divider(comptime Int: type) type {
         //   create a bitmask with all bits set to 1 (if the divisor is negative)
         //   or 0 (if the divisor is positive).
         // u16: [0-3] shift value
-        //      [5] ignored
+        //      [4-5] ignored
         //      [6] add indicator
         //      magic number of 0 indicates shift path
         //
         // s16: [0-3] shift value
-        //      [5] ignored
+        //      [4-5] ignored
         //      [6] add indicator
         //      [7] indicates negative divisor
         //      magic number of 0 indicates shift path
