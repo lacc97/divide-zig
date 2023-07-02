@@ -9,8 +9,7 @@ pub fn main() !void {
 
     const alloc = gpa.allocator();
 
-    // const seed = @as(u64, @truncate(@as(u128, @bitCast(std.time.nanoTimestamp()))));
-    const seed = 0;
+    const seed = @as(u64, @truncate(@as(u128, @bitCast(std.time.nanoTimestamp()))));
     std.debug.print("seed: {}\n", .{seed});
 
     inline for (.{ u16, i16, u32, i32, u64, i64 }) |I| {
