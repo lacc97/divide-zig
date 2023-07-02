@@ -183,8 +183,13 @@ fn Test(comptime Int: type) type {
         }
 
         fn testOne(num: Int, denom: Int, divider: Divider) !void {
-            const expected = @divTrunc(num, denom);
+            if (info.signedness == .signed and (num == std.math.minInt(Int) and denom == -1)) {
+                // The result of this would overflow the signed int.
+                return;
+            }
+
             const got = divider.divTrunc(num);
+            const expected = @divTrunc(num, denom);
 
             if (got != expected) {
                 std.debug.print("when {}/{}: expected {}, got {}\n", .{ num, denom, expected, got });
